@@ -1,0 +1,58 @@
+
+<html>
+<head>
+  <title>Date Interval Calculation</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <center>
+<div class="" style="width: 50%; height: 500px;">
+  <form >
+    <div class="form-group col-lg-3">
+      <label for="startDate">Start Date</label>
+      <input type="date" class="form-control" id="startDate">
+    </div>
+    <div class="form-group  col-lg-3">
+      <label for="endDate">End Date</label>
+      <input type="date" class="form-control" id="endDate">
+    </div>
+    <button type="button" class="btn btn-primary col-lg-3" id="calculateBtn">Calculate</button>    
+  </form>
+  <p id="date" class="m-5"></p>
+ 
+            <p id="year" class="m-5"></p>
+            <p id="month" class="m-5"></p> 
+              <p id="week" class="m-5"></p>
+                 <p id="day" class="m-5"></p>
+                </div>
+                </center>
+ 
+  <script>
+    $(document).ready(function() {
+      $("#calculateBtn").click(function() {
+        var startDate = new Date($("#startDate").val());
+        var endDate = new Date($("#endDate").val());
+  
+        var interval = endDate.getTime() - startDate.getTime();
+
+        var years = Math.floor(interval / (1000 * 60 * 60 * 24 * 365.25));
+        var months = Math.floor(interval / (1000 * 60 * 60 * 24 * 30.44));
+
+        var weeks = Math.floor(interval / (1000 * 60 * 60 * 24 * 7));
+
+        var days = Math.floor(interval / (1000 * 60 * 60 * 24));
+        
+
+        document.getElementById("date").innerHTML=  " Date intervel Between:" + startDate.toLocaleDateString() + "and" +  endDate.toLocaleDateString();
+        document.getElementById("year").innerHTML=  " In Years:" + years;
+        document.getElementById("month").innerHTML=  " In months:" + months;
+        document.getElementById("week").innerHTML=  " In weeks:" + weeks;
+        document.getElementById("day").innerHTML=  " In days:" + days;
+      });
+    });
+  </script>
+</body>
+</html>
